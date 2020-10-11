@@ -1,13 +1,9 @@
-# %%
 from funcs import *
 import random
 import copy
 import platform
 import os
 import time
-
-# 0 for player 1 / 1 for player 2
-score = [0, 0]
 
 playerTurn = nextPlayerTurn = 0
 gameOver = False
@@ -27,20 +23,19 @@ os.system(BORRAR)
 NUM_ITERATIONS = getNumIteration(BORRAR)
 
 
-while(not isEnd(actualBoard)):
-    os.system(BORRAR)
+while not isEnd(actualBoard):
     PrintBoard(actualBoard)
 
-    if(playerTurn == 0):
+    if playerTurn == 0:
+        print("Your turn...")
         while 1:
             userTurn = validateUserTurn(copy.deepcopy(actualBoard[0]))
-            if(userTurn == None):
-                os.system(BORRAR)
+            if userTurn == None:
                 PrintBoard(actualBoard)
                 continue
             else:
                 actualBoard, playerTurn = Move(
-                    playerTurn=0, cell=0, board=copy.deepcopy(actualBoard))
+                    playerTurn=0, cell=userTurn - 1, board=copy.deepcopy(actualBoard))
                 break
 
     else:

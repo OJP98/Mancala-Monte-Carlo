@@ -151,6 +151,7 @@ def validateUserTurn(board):
 def Move(playerTurn, cell, board):
     lastPos = 0
     currRow = playerTurn
+    playerName = 'PC' if playerTurn == 1 else playerName = 'You'
 
     # Assume the next player moving will be the opponent
     nextPlayerTurn = (playerTurn + 1) % 2
@@ -197,7 +198,6 @@ def Move(playerTurn, cell, board):
     if board[currRow][lastPos] == 1 and currRow == playerTurn and lastPos != 6:
 
         frontPos = (currRow + 1) % 2
-        opponentPit = board[frontPos][-1]
         frontRow = board[frontPos][:6][::-1]
         frontStones = frontRow[lastPos]
 
@@ -205,6 +205,7 @@ def Move(playerTurn, cell, board):
 
         # If the other player has stones in its cell, collect them
         if frontStones > 0:
+            print(f'{playerName} gets {frontStones} from the front row!')
             board[currRow][-1] = board[currRow][-1] + frontStones
 
     #                  CHECK IF LAST POS == PIT
