@@ -134,7 +134,7 @@ def validateUserTurn(board):
     userTurn = input("> ")
     posibleTurns = getPosiblesTurnos(board)
     try:
-        if(int(userTurn) in posibleTurns):
+        if (int(userTurn) - 1) in posibleTurns:
             return int(userTurn)
         else:
             print("Enter a valid option!")
@@ -209,7 +209,7 @@ def Move(playerTurn, cell, board):
 
         # If the other player has stones in its cell, collect them
         if frontStones > 0:
-            print(f'{playerName} gets {frontStones} from the front row!')
+            # print(f'{playerName} got {frontStones} from the front row!')
             board[currRow][-1] = board[currRow][-1] + frontStones
 
     #                  CHECK IF LAST POS == PIT
