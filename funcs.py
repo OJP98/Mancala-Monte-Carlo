@@ -151,7 +151,11 @@ def validateUserTurn(board):
 def Move(playerTurn, cell, board):
     lastPos = 0
     currRow = playerTurn
-    playerName = 'PC' if playerTurn == 1 else playerName = 'You'
+    playerName = ''
+    if playerTurn == 1:
+        playerName = 'PC'
+    else:
+        playerName = 'You'
 
     # Assume the next player moving will be the opponent
     nextPlayerTurn = (playerTurn + 1) % 2
@@ -218,7 +222,9 @@ def Move(playerTurn, cell, board):
 
 
 def PrintBoard(board):
-    row0 = board[0]
-    row1 = board[1][::-1]
-    print(row1)
-    print('  ', row0)
+    boardFormat = f'''
+    {board[1][5]}  {board[1][4]}  {board[1][3]}  {board[1][2]}  {board[1][1]}  {board[1][0]}
+{board[1][6]}                       {board[0][6]}
+    {board[0][0]}  {board[0][1]}  {board[0][2]}  {board[0][3]}  {board[0][4]}  {board[0][5]}
+    '''
+    print(boardFormat)
