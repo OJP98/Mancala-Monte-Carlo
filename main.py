@@ -45,9 +45,16 @@ while not isEnd(actualBoard):
             playerTurn=1, cell=pcTurn, board=copy.deepcopy(actualBoard))
         time.sleep(1)
 
-PrintBoard(actualBoard)
+# PrintBoard(actualBoard)
 points1, points2 = getPoints(actualBoard)
-print()
+print(
+    f'''
+    GAME OVER
+    
+SCORE
+You: {points1}
+PC: {points2}
+    ''')
 
 if(points1 > points2):
     print("You win!")
